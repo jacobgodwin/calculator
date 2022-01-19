@@ -1,6 +1,6 @@
 {
   // content rendering
-  "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'Cascadia Mono', 'JetBrains Mono', 'Fira Code', Consolas, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 15,
   "editor.wordWrap": "on",
@@ -12,7 +12,7 @@
   "window.zoomLevel": 0,
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": true,
-  "editor.cursorStyle": "block",
+  "editor.cursorStyle": "line",
   // tabbing and formatting
   "editor.formatOnType": true,
   "editor.formatOnPaste": true,
