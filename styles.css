@@ -1,6 +1,7 @@
 * {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  cursor: default;
 }
 
 body {
@@ -8,9 +9,11 @@ body {
   justify-content: center;
 }
 
-h1 {
-  padding-right: 16px;
+#dispValue {
   font-weight: 100;
+  font-size: 3em;
+  margin: 0;
+  padding: 0 16px 0 0;
 }
 
 #container {
@@ -20,7 +23,7 @@ h1 {
   justify-content: center;
   align-items: center;
   width: 233px;
-  height: 322px;
+  height: 312px;
   border: 1px solid rgb(85, 81, 82);
   border-radius: 10px;
   box-shadow: 5px 10px 18px rgb(127, 124, 125);
@@ -34,15 +37,17 @@ h1 {
 }
 
 #display {
-  background-color: rgb(85, 81, 82);
-  color: rgb(238, 237, 237);
   display: flex;
   justify-content: flex-end;
-  height: 87px;
+  align-items: flex-end;
+  background-color: rgb(85, 81, 82);
+  color: rgb(238, 237, 237);
+  height: 77px;
   width: 233px;
-  font-size: 24px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  margin: 0;
+  padding: 0;
 }
 
 .operation {
@@ -58,6 +63,10 @@ h1 {
   border-top: 1px solid rgb(85, 81, 82);
 }
 
+.operation:active {
+  background-color: rgb(192, 129, 45);
+}
+
 .number-btn {
   color: rgb(236, 235, 235);
   background-color: rgb(127, 124, 125);
@@ -69,10 +78,24 @@ h1 {
   border: 1px solid rgb(85, 81, 82);
 }
 
+.number-btn:active {
+  background-color: rgb(178, 177, 178);
+}
+
 .misc-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 58.25px;
   border-right: 1px solid rgb(85, 81, 82);
   border-left: 1px solid rgb(85, 81, 82);
   border-top: 1px solid rgb(85, 81, 82);
+  background-color: rgb(102, 98, 99);
+  color: rgb(232, 231, 231);
+}
+
+.misc-btn:active {
+  background-color: rgb(127, 124, 125);
 }
 
 .number-btn + .number-btn {
@@ -116,29 +139,5 @@ h1 {
 }
 
 #clear {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgb(232, 231, 231);
-  background-color: rgb(102, 98, 99);
   border-left: 0;
-  width: 58.25px;
-}
-
-#sign {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgb(232, 231, 231);
-  background-color: rgb(102, 98, 99);
-  width: 58.25px;
-}
-
-#percent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgb(232, 231, 231);
-  background-color: rgb(102, 98, 99);
-  width: 58.25px;
 }

@@ -33,3 +33,17 @@ function operate(operator, x, y) {
     return divide(x, y);
   }
 }
+
+let displayValue = document.getElementById("dispValue");
+let numbers = document.getElementsByClassName("number-btn");
+const clearBtn = document.getElementById("clear");
+
+clearBtn.addEventListener("click", function (event) {
+  displayValue.innerHTML = 0;
+});
+
+for (let i = 0; i < numbers.length; i++) {
+  numbers[i].addEventListener("click", function (event) {
+    displayValue.innerHTML = numbers[i].textContent;
+  });
+}
