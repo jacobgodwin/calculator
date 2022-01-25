@@ -8,8 +8,10 @@ let decSelected = false;
 
 const numbers = document.getElementsByClassName("number-btn");
 const clearBtn = document.getElementById("clear");
-const equalSign = document.getElementById("equals");
+const equalBtn = document.getElementById("equals");
 const decBtn = document.getElementById("decimal");
+const signBtn = document.getElementById("sign");
+const percentBtn = document.getElementById("percent");
 
 function add(x, y) {
   let sum = 0;
@@ -61,13 +63,13 @@ function operate(selectedOperator, x, y) {
 
 function totalUp() {
   operate(selectedOperator, initialValue, nextValue);
+  displayValue.innerHTML = total;
+  removeClass();
+  decSelected = false;
   console.log("total: " + total);
   console.log("IV: " + initialValue);
   console.log("NV: " + nextValue);
   console.log("Op: " + selectedOperator);
-  displayValue.innerHTML = total;
-  removeClass();
-  decSelected = false;
 }
 
 function addDecimal() {
@@ -101,8 +103,8 @@ function numDisplay(e) {
     console.log("NV: " + nextValue);
     console.log("Op: " + selectedOperator);
   } else {
-    nextValue = parseFloat(e.target.textContent);
-    displayValue.innerHTML = parseFloat(e.target.textContent);
+    nextValue = +(nextValue + e.target.textContent);
+    displayValue.innerHTML = nextValue;
     console.log("total: " + total);
     console.log("IV: " + initialValue);
     console.log("NV: " + nextValue);
@@ -118,6 +120,7 @@ function selectOperator(e) {
     selectedOperator = e.target.id;
     initialValue = displayValue.innerHTML;
     total = displayValue.innerHTML;
+    nextValue = 0;
     console.log("total: " + total);
     console.log("IV: " + initialValue);
     console.log("NV: " + nextValue);
@@ -129,6 +132,7 @@ function selectOperator(e) {
     selectedOperator = e.target.id;
     initialValue = displayValue.innerHTML;
     total = displayValue.innerHTML;
+    nextValue = 0;
     console.log("total: " + total);
     console.log("IV: " + initialValue);
     console.log("NV: " + nextValue);
@@ -141,6 +145,7 @@ function selectOperator(e) {
     selectedOperator = e.target.id;
     initialValue = total;
     displayValue.innerHTML = total;
+    nextValue = 0;
     console.log("total: " + total);
     console.log("IV: " + initialValue);
     console.log("NV: " + nextValue);
@@ -152,6 +157,7 @@ function selectOperator(e) {
     selectedOperator = e.target.id;
     initialValue = total;
     displayValue.innerHTML = total;
+    nextValue = 0;
     console.log("total: " + total);
     console.log("IV: " + initialValue);
     console.log("NV: " + nextValue);
@@ -174,11 +180,44 @@ function removeClass() {
   }
 }
 
+function switchSign() {
+  if (Math.sign(displayValue.innerHTML) === 1) {
+    displayValue.innerHTML = -Math.abs(displayValue.innerHTML);
+    total = displayValue.innerHTML;
+    nextValue = -Math.abs(nextValue);
+    console.log("total: " + total);
+    console.log("IV: " + initialValue);
+    console.log("NV: " + nextValue);
+    console.log("Op: " + selectedOperator);
+  } else if (Math.sign(displayValue.innerHTML) === -1) {
+    displayValue.innerHTML = Math.abs(displayValue.innerHTML);
+    nextValue = displayValue.innerHTML;
+    total = displayValue.innerHTML;
+    initialValue = 0;
+    selectedOperator = "add";
+    console.log("total: " + total);
+    console.log("IV: " + initialValue);
+    console.log("NV: " + nextValue);
+    console.log("Op: " + selectedOperator);
+  } else if (Math.sign(displayValue.innerHTML) === 0) {
+    return;
+  }
+}
+
+function percentage() {
+  displayValue.innerHTML = parseFloat(displayValue.innerHTML) / 100;
+  nextValue = parseFloat(nextValue) / 100;
+}
+
+percentBtn.addEventListener("click", percentage);
+
 decBtn.addEventListener("click", addDecimal);
 
-equalSign.addEventListener("click", totalUp);
+equalBtn.addEventListener("click", totalUp);
 
 clearBtn.addEventListener("click", clearDisplay);
+
+signBtn.addEventListener("click", switchSign);
 
 for (let i = 0; i < numbers.length; i++) {
   numbers[i].addEventListener("click", numDisplay);
