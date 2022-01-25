@@ -38,6 +38,10 @@ a {
   color: #343232;
 }
 
+.bi-github {
+  padding-right: 8px;
+}
+
 #dispValue {
   font-weight: 100;
   font-size: 3em;
