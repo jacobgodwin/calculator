@@ -104,8 +104,15 @@ body {
   border: 1px solid rgb(85, 81, 82);
 }
 
-.number-btn:active {
-  background-color: rgb(178, 177, 178);
+.dec-btn {
+  color: rgb(236, 235, 235);
+  background-color: rgb(127, 124, 125);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 47px;
+  width: 58.25px;
+  border: 1px solid rgb(85, 81, 82);
 }
 
 .misc-btn {
@@ -120,15 +127,17 @@ body {
   color: rgb(232, 231, 231);
 }
 
+.number-btn:active,
+.dec-btn:active {
+  background-color: rgb(178, 177, 178);
+}
+
 .misc-btn:active {
   background-color: rgb(127, 124, 125);
 }
 
-.number-btn + .number-btn {
-  border-left: 0;
-  border-bottom: 0;
-}
-
+.number-btn + .number-btn,
+.number-btn + .dec-btn,
 .number-btn + .operation,
 .misc-btn + .operation,
 .misc-btn + .misc-btn {
