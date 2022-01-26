@@ -1,6 +1,6 @@
 {
   // content rendering
-  "editor.fontFamily": "'Cascadia Code', 'JetBrains Mono', 'Fira Code', Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'Fira Code', 'Cascadia Code', 'JetBrains Mono', Consolas, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 15,
   "editor.wordWrap": "on",

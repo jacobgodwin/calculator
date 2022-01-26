@@ -5,6 +5,7 @@ let displayValue = document.getElementById("dispValue");
 let operators = document.getElementsByClassName("operation");
 let total = null;
 let decSelected = false;
+let dispFontSize = 48;
 
 const numbers = document.getElementsByClassName("number-btn");
 const clearBtn = document.getElementById("clear");
@@ -66,10 +67,6 @@ function totalUp() {
   displayValue.innerHTML = total;
   removeClass();
   decSelected = false;
-  console.log("total: " + total);
-  console.log("IV: " + initialValue);
-  console.log("NV: " + nextValue);
-  console.log("Op: " + selectedOperator);
 }
 
 function addDecimal() {
@@ -87,28 +84,21 @@ function clearDisplay() {
   total = null;
   selectedOperator = "add";
   decSelected = false;
+  dispFontSize = 48;
+  displayValue.style.fontSize = dispFontSize + "px";
   removeClass();
-  console.log("total: " + total);
-  console.log("IV: " + initialValue);
-  console.log("NV: " + nextValue);
-  console.log("Op: " + selectedOperator);
 }
 
 function numDisplay(e) {
   if (decSelected) {
     nextValue += parseFloat(e.target.textContent);
     displayValue.innerHTML += parseFloat(e.target.textContent);
-    console.log("total: " + total);
-    console.log("IV: " + initialValue);
-    console.log("NV: " + nextValue);
-    console.log("Op: " + selectedOperator);
+    reduceFont();
   } else {
+    console.log(e.target);
     nextValue = +(nextValue + e.target.textContent);
     displayValue.innerHTML = nextValue;
-    console.log("total: " + total);
-    console.log("IV: " + initialValue);
-    console.log("NV: " + nextValue);
-    console.log("Op: " + selectedOperator);
+    reduceFont();
   }
 }
 
@@ -121,10 +111,6 @@ function selectOperator(e) {
     initialValue = displayValue.innerHTML;
     total = displayValue.innerHTML;
     nextValue = 0;
-    console.log("total: " + total);
-    console.log("IV: " + initialValue);
-    console.log("NV: " + nextValue);
-    console.log("Op: " + selectedOperator);
   } else if (total === null && decSelected && initialValue === 0) {
     decSelected = false;
     removeClass();
@@ -133,10 +119,6 @@ function selectOperator(e) {
     initialValue = displayValue.innerHTML;
     total = displayValue.innerHTML;
     nextValue = 0;
-    console.log("total: " + total);
-    console.log("IV: " + initialValue);
-    console.log("NV: " + nextValue);
-    console.log("Op: " + selectedOperator);
   } else if (decSelected) {
     operate(selectedOperator, initialValue, nextValue);
     decSelected = false;
@@ -146,10 +128,6 @@ function selectOperator(e) {
     initialValue = total;
     displayValue.innerHTML = total;
     nextValue = 0;
-    console.log("total: " + total);
-    console.log("IV: " + initialValue);
-    console.log("NV: " + nextValue);
-    console.log("Op: " + selectedOperator);
   } else {
     operate(selectedOperator, initialValue, nextValue);
     removeClass();
@@ -158,10 +136,6 @@ function selectOperator(e) {
     initialValue = total;
     displayValue.innerHTML = total;
     nextValue = 0;
-    console.log("total: " + total);
-    console.log("IV: " + initialValue);
-    console.log("NV: " + nextValue);
-    console.log("Op: " + selectedOperator);
   }
 }
 
@@ -185,20 +159,12 @@ function switchSign() {
     displayValue.innerHTML = -Math.abs(displayValue.innerHTML);
     total = displayValue.innerHTML;
     nextValue = -Math.abs(nextValue);
-    console.log("total: " + total);
-    console.log("IV: " + initialValue);
-    console.log("NV: " + nextValue);
-    console.log("Op: " + selectedOperator);
   } else if (Math.sign(displayValue.innerHTML) === -1) {
     displayValue.innerHTML = Math.abs(displayValue.innerHTML);
     nextValue = displayValue.innerHTML;
     total = displayValue.innerHTML;
     initialValue = 0;
     selectedOperator = "add";
-    console.log("total: " + total);
-    console.log("IV: " + initialValue);
-    console.log("NV: " + nextValue);
-    console.log("Op: " + selectedOperator);
   } else if (Math.sign(displayValue.innerHTML) === 0) {
     return;
   }
@@ -207,6 +173,16 @@ function switchSign() {
 function percentage() {
   displayValue.innerHTML = parseFloat(displayValue.innerHTML) / 100;
   nextValue = parseFloat(nextValue) / 100;
+}
+
+function reduceFont() {
+  let dispLen = displayValue.clientWidth;
+  let i = dispLen;
+  while (i >= 213) {
+    displayValue.style.fontSize = dispFontSize - 0.2 + "px";
+    dispFontSize = dispFontSize - 0.2;
+    i--;
+  }
 }
 
 percentBtn.addEventListener("click", percentage);
@@ -226,3 +202,46 @@ for (let i = 0; i < numbers.length; i++) {
 for (let i = 0; i < operators.length; i++) {
   operators[i].addEventListener("click", selectOperator);
 }
+
+// Keyboard support
+document.addEventListener("keydown", function (event) {
+  if (event.key === "1") {
+    document.getElementById("num1").click();
+  } else if (event.key === "2") {
+    document.getElementById("num2").click();
+  } else if (event.key === "3") {
+    document.getElementById("num3").click();
+  } else if (event.key === "4") {
+    document.getElementById("num4").click();
+  } else if (event.key === "5") {
+    document.getElementById("num5").click();
+  } else if (event.key === "6") {
+    document.getElementById("num6").click();
+  } else if (event.key === "7") {
+    document.getElementById("num7").click();
+  } else if (event.key === "8") {
+    document.getElementById("num8").click();
+  } else if (event.key === "9") {
+    document.getElementById("num9").click();
+  } else if (event.key === "0") {
+    document.getElementById("num0").click();
+  } else if (event.key === "c") {
+    clearBtn.click();
+  } else if (event.key === "Enter") {
+    equalBtn.click();
+  } else if (event.key === "*") {
+    document.getElementById("multiply").click();
+  } else if (event.key === "-") {
+    document.getElementById("subtract").click();
+  } else if (event.key === "/") {
+    document.getElementById("divide").click();
+  } else if (event.key === "+") {
+    document.getElementById("add").click();
+  } else if (event.key === "%") {
+    percentBtn.click();
+  } else if (event.key === "s") {
+    signBtn.click();
+  } else if (event.key === ".") {
+    decBtn.click();
+  }
+});
