@@ -1,3 +1,4 @@
+/* ------- Global Styling ------- */
 html {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -24,44 +25,7 @@ body {
   align-items: center;
 }
 
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: auto;
-  color: #343232;
-}
-
-a {
-  text-decoration: none;
-  color: #343232;
-}
-
-.bi-github {
-  padding-right: 8px;
-}
-
-.shortcuts {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: auto;
-  gap: 20px;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  border: 2px solid #343232;
-  padding: 20px;
-  border-radius: 5px;
-}
-
+/* ------- Shortcut Legend Styling ------- */
 table {
   color: #343232;
   border-collapse: separate;
@@ -120,13 +84,27 @@ span {
   font-size: 1.5em;
 }
 
-#dispValue {
-  font-weight: 100;
-  font-size: 48px;
-  margin: 0;
-  padding: 0 16px 0 0;
+.shortcuts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  gap: 20px;
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: 2px solid #343232;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* ------- Calculator Styling ------- */
 #container {
   background-color: #343232;
   display: flex;
@@ -140,13 +118,6 @@ span {
   box-shadow: 2px 8px 30px #343232;
   margin-top: 100px;
   cursor: default;
-}
-
-.row {
-  display: flex;
-  width: 233px;
-  height: 47px;
-  font-size: 1.35rem;
 }
 
 #display {
@@ -166,6 +137,49 @@ span {
   padding: 0;
 }
 
+#dispValue {
+  font-weight: 100;
+  font-size: 48px;
+  margin: 0;
+  padding: 0 16px 0 0;
+}
+
+.row {
+  display: flex;
+  width: 233px;
+  height: 47px;
+  font-size: 1.35rem;
+}
+
+/* ------- Number Styling ------- */
+.number-btn {
+  color: rgb(236, 235, 235);
+  background-color: rgb(127, 124, 125);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 47px;
+  width: 58.25px;
+  border: 1px solid rgb(85, 81, 82);
+}
+
+#num1,
+#num4,
+#num7,
+#num0 {
+  border-left: 1px solid #a8a4a5;
+  border-bottom: 0;
+}
+
+#num0 {
+  flex-grow: 1;
+  width: 116.5px;
+  border-bottom-left-radius: 10px;
+  padding-right: 1px;
+  border-bottom: 1px solid #a8a4a5;
+}
+
+/* ------- Operation Styling ------- */
 .operation {
   display: flex;
   justify-content: center;
@@ -197,17 +211,7 @@ span {
   border-top: 2px solid rgb(81, 79, 81);
 }
 
-.number-btn {
-  color: rgb(236, 235, 235);
-  background-color: rgb(127, 124, 125);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 47px;
-  width: 58.25px;
-  border: 1px solid rgb(85, 81, 82);
-}
-
+/* ------- Misc Btn Styling ------- */
 .dec-btn {
   color: rgb(236, 235, 235);
   background-color: rgb(127, 124, 125);
@@ -260,22 +264,6 @@ span {
   border-bottom: 0;
 }
 
-#num1,
-#num4,
-#num7,
-#num0 {
-  border-left: 1px solid #a8a4a5;
-  border-bottom: 0;
-}
-
-#num0 {
-  flex-grow: 1;
-  width: 116.5px;
-  border-bottom-left-radius: 10px;
-  padding-right: 1px;
-  border-bottom: 1px solid #a8a4a5;
-}
-
 #equals {
   display: flex;
   justify-content: center;
@@ -295,4 +283,23 @@ span {
 #clear {
   border-top: 0;
   border-left: 1px solid #a8a4a5;
+}
+
+/* ------- Footer Styling ------- */
+.bi-github {
+  padding-right: 8px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  color: #343232;
+}
+
+a {
+  text-decoration: none;
+  color: #343232;
 }

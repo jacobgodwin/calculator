@@ -95,7 +95,6 @@ function numDisplay(e) {
     displayValue.innerHTML += parseFloat(e.target.textContent);
     reduceFont();
   } else {
-    console.log(e.target);
     nextValue = +(nextValue + e.target.textContent);
     displayValue.innerHTML = nextValue;
     reduceFont();
@@ -185,6 +184,19 @@ function reduceFont() {
   }
 }
 
+function backspace() {
+  if (displayValue.innerHTML.length === 1) {
+    displayValue.innerHTML = 0;
+    nextValue = 0;
+  } else {
+    displayValue.innerHTML = displayValue.innerHTML.substring(
+      0,
+      displayValue.innerHTML.length - 1
+    );
+    nextValue = nextValue.substring(0, nextValue.length - 1);
+  }
+}
+
 percentBtn.addEventListener("click", percentage);
 
 decBtn.addEventListener("click", addDecimal);
@@ -243,5 +255,7 @@ document.addEventListener("keydown", function (event) {
     signBtn.click();
   } else if (event.key === ".") {
     decBtn.click();
+  } else if (event.key === "Backspace") {
+    backspace();
   }
 });
