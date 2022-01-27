@@ -6,6 +6,7 @@ let operators = document.getElementsByClassName("operation");
 let total = null;
 let decSelected = false;
 let dispFontSize = 48;
+let totalSelected = false;
 
 const numbers = document.getElementsByClassName("number-btn");
 const clearBtn = document.getElementById("clear");
@@ -67,6 +68,7 @@ function totalUp() {
   displayValue.innerHTML = total;
   removeClass();
   decSelected = false;
+  totalSelected = true;
 }
 
 function addDecimal() {
@@ -86,15 +88,21 @@ function clearDisplay() {
   decSelected = false;
   dispFontSize = 48;
   displayValue.style.fontSize = dispFontSize + "px";
+  totalSelected = false;
   removeClass();
 }
 
 function numDisplay(e) {
-  if (decSelected) {
+  if (decSelected && !totalSelected) {
     nextValue += parseFloat(e.target.textContent);
     displayValue.innerHTML += parseFloat(e.target.textContent);
     reduceFont();
-  } else {
+  } else if (!decSelected && !totalSelected) {
+    nextValue = +(nextValue + e.target.textContent);
+    displayValue.innerHTML = nextValue;
+    reduceFont();
+  } else if (totalSelected) {
+    clearDisplay();
     nextValue = +(nextValue + e.target.textContent);
     displayValue.innerHTML = nextValue;
     reduceFont();
@@ -110,6 +118,7 @@ function selectOperator(e) {
     initialValue = displayValue.innerHTML;
     total = displayValue.innerHTML;
     nextValue = 0;
+    totalSelected = false;
   } else if (total === null && decSelected && initialValue === 0) {
     decSelected = false;
     removeClass();
@@ -118,6 +127,7 @@ function selectOperator(e) {
     initialValue = displayValue.innerHTML;
     total = displayValue.innerHTML;
     nextValue = 0;
+    totalSelected = false;
   } else if (decSelected) {
     operate(selectedOperator, initialValue, nextValue);
     decSelected = false;
@@ -127,6 +137,7 @@ function selectOperator(e) {
     initialValue = total;
     displayValue.innerHTML = total;
     nextValue = 0;
+    totalSelected = false;
   } else {
     operate(selectedOperator, initialValue, nextValue);
     removeClass();
@@ -135,6 +146,7 @@ function selectOperator(e) {
     initialValue = total;
     displayValue.innerHTML = total;
     nextValue = 0;
+    totalSelected = false;
   }
 }
 
