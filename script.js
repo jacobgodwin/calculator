@@ -69,6 +69,9 @@ function totalUp() {
   removeClass();
   decSelected = false;
   totalSelected = true;
+  if (total === "ERROR") {
+    window.open("https://youtu.be/zsTRxXvQY0s");
+  }
 }
 
 function addDecimal() {
